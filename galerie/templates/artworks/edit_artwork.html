@@ -1,0 +1,100 @@
+{% extends "artworks/base.html" %}
+{% block title %}Artwork bearbeiten{% endblock %}
+{% block body_class %}upload-page{% endblock %}
+
+{% block extra_styles %}
+<style>
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        flex-direction: column;
+    }
+    .page-body {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+    }
+    .upload-container {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        padding: 40px;
+        width: 100%;
+        max-width: 500px;
+    }
+    h1 { color: #333; margin-bottom: 8px; text-align: center; }
+    .current-image { margin-bottom: 20px; text-align: center; }
+    .current-image img { max-height: 160px; border-radius: 8px; object-fit: cover; }
+    .current-image p { color: #888; font-size: 0.85rem; margin-top: 6px; }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 8px; color: #555; font-weight: 500; }
+    .form-control {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid #e1e1e1;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+    .form-control:focus { outline: none; border-color: #667eea; }
+    textarea.form-control { resize: vertical; min-height: 100px; }
+    .btn-save {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-save:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(102,126,234,0.4); }
+    .btn-cancel {
+        display: block;
+        text-align: center;
+        margin-top: 12px;
+        color: #888;
+        text-decoration: underline;
+        font-size: 0.9rem;
+    }
+    .error-list { color: #dc3545; font-size: 14px; margin-top: 5px; list-style: none; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="page-body">
+    <div class="upload-container">
+        <h1>Artwork bearbeiten</h1>
+
+        <div class="current-image">
+            <img src="{{ artwork.image.url }}" alt="{{ artwork.name }}">
+            <p>Aktuelles Bild — neues Bild hochladen, um es zu ersetzen</p>
+        </div>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_name">Artwork Name</label>
+                {{ form.name }}
+                {% if form.name.errors %}<ul class="error-list">{% for e in form.name.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_description">Beschreibung</label>
+                {{ form.description }}
+                {% if form.description.errors %}<ul class="error-list">{% for e in form.description.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_image">Optional: Bild ersetzen</label>
+                {{ form.image }}
+                {% if form.image.errors %}<ul class="error-list">{% for e in form.image.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+            </div>
+            <button type="submit" class="btn-save">Änderungen speichern</button>
+            <a href="{% url 'home' %}" class="btn-cancel">Abbrechen</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

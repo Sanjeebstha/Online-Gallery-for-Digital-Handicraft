@@ -1,0 +1,368 @@
+{% extends "artworks/base.html" %}
+{% block title %}Datenschutzerklärung — Galerie{% endblock %}
+
+{% block extra_styles %}
+<style>
+    body { background: #f5f5f5; }
+
+    .privacy-page {
+        max-width: 820px;
+        margin: 3rem auto;
+        padding: 0 1.5rem 4rem;
+    }
+
+    .privacy-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        padding: 3rem 3.5rem;
+    }
+
+    .privacy-hero {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .privacy-hero .shield {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .privacy-hero h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #2d2d2d;
+        margin-bottom: 0.5rem;
+        font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    .privacy-hero p {
+        color: #888;
+        font-size: 0.95rem;
+    }
+
+    .privacy-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .privacy-section h2 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #667eea;
+        margin-bottom: 1rem;
+        padding-bottom: 0.4rem;
+        border-bottom: 2px solid #f0f0f0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .privacy-section h2 .section-num {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-size: 0.75rem;
+        font-weight: 700;
+        width: 1.6rem;
+        height: 1.6rem;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .privacy-section p {
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.85;
+        margin-bottom: 0.8rem;
+        font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    .privacy-section ul {
+        list-style: none;
+        margin: 0.5rem 0 1rem 0;
+        padding: 0;
+    }
+
+    .privacy-section ul li {
+        color: #555;
+        font-size: 0.93rem;
+        line-height: 1.7;
+        padding: 0.3rem 0 0.3rem 1.5rem;
+        position: relative;
+        font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    .privacy-section ul li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-weight: 700;
+    }
+
+    .rights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 0.75rem;
+        margin-top: 1rem;
+    }
+
+    .right-item {
+        background: #f8f7ff;
+        border-left: 3px solid #667eea;
+        border-radius: 0 8px 8px 0;
+        padding: 0.75rem 1rem;
+    }
+
+    .right-item strong {
+        display: block;
+        font-size: 0.85rem;
+        color: #444;
+        margin-bottom: 0.2rem;
+    }
+
+    .right-item span {
+        font-size: 0.78rem;
+        color: #888;
+    }
+
+    .highlight-box {
+        background: #f8f7ff;
+        border: 1px solid #e0dcff;
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        margin: 1rem 0;
+    }
+
+    .highlight-box p {
+        margin: 0 !important;
+        color: #555;
+        font-size: 0.92rem;
+    }
+
+    .privacy-footer {
+        text-align: center;
+        margin-top: 2.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #f0f0f0;
+        color: #aaa;
+        font-size: 0.82rem;
+    }
+
+    @media (max-width: 640px) {
+        .privacy-card { padding: 1.5rem 1.25rem; }
+        .privacy-hero h1 { font-size: 1.5rem; }
+        .rights-grid { grid-template-columns: 1fr; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="privacy-page">
+    <div class="privacy-card">
+
+        <div class="privacy-hero">
+            <span class="shield">🛡️</span>
+            <h1>Datenschutzerklärung</h1>
+            <p>Galerie &nbsp;·&nbsp; Zuletzt aktualisiert: {% now "F Y" %}</p>
+        </div>
+
+        <!-- 1. Einleitung -->
+        <div class="privacy-section">
+            <h2><span class="section-num">1</span> Einleitung</h2>
+            <p>
+                Diese Website wird betrieben von: <strong>Thomas Hachtmann</strong>.
+            </p>
+            <p>
+                Der Schutz Ihrer personenbezogenen Daten hat für uns höchste Priorität.
+                Wir behandeln Ihre Daten vertraulich und entsprechend den geltenden
+                Datenschutzvorschriften, insbesondere der
+                Datenschutz-Grundverordnung (DSGVO).
+            </p>
+            <p>
+                Diese Website dient ausschließlich zur Präsentation von Kunstwerken.
+                Besucher können Inhalte ansehen, jedoch keine Konten erstellen,
+                keine Kommentare verfassen und keine Käufe tätigen.
+            </p>
+            <p>
+                Mit dieser Datenschutzerklärung möchten wir Sie transparent darüber informieren, 
+                welche Daten beim Besuch unserer Website verarbeitet werden, 
+                zu welchem Zweck dies geschieht und welche Rechte Ihnen dabei zustehen. 
+                Dabei legen wir Wert auf eine verständliche und klare Darstellung.
+            </p>
+        </div>
+
+        <!-- 2. Änderungen -->
+        <div class="privacy-section">
+            <h2><span class="section-num">2</span> Änderungen dieser Datenschutzrichtlinie</h2>
+            <p>
+                Wir behalten uns das Recht vor, diese Datenschutzerklärung jederzeit
+                anzupassen, um sie an gesetzliche Anforderungen oder technische
+                Änderungen der Website anzupassen.
+            </p>
+        </div>
+
+        <!-- 3. Verarbeitung -->
+        <div class="privacy-section">
+            <h2><span class="section-num">3</span> Verarbeitung personenbezogener Daten und Hosting</h2>
+            <p>
+                Beim Besuch unserer Website werden technisch notwendige
+                personenbezogene Daten verarbeitet, um die sichere, stabile und
+                fehlerfreie Bereitstellung der Website zu gewährleisten.
+                Personenbezogene Daten sind Informationen, mit denen eine Person identifiziert werden kann, 
+                beispielsweise die IP-Adresse gemäß <strong>Art. 4 Nr. 1 DSGVO</strong>. 
+                Die Verarbeitung dieser Daten erfolgt automatisch durch technische Systeme beim Aufruf der Website <strong>gemäß Art. 4 Nr. 2 DSGVO</strong>.
+            </p>
+            <div class="highlight-box">
+                <p>
+                    Das externe Hosting erfolgt zum Zweck einer sicheren, schnellen 
+                    und zuverlässigen Bereitstellung unserer Website und beruht auf unserem berechtigten
+                    Interesses gemäß <strong>Art. 6 Abs. 1 lit. f DSGVO</strong>.
+                    Der Hosting-Dienstleister verarbeitet Daten im Rahmen eines
+                    Vertrags zur Auftragsverarbeitung gemäß <strong>Art. 28 DSGVO</strong>.
+                </p>
+            </div>
+            <p>Dabei können insbesondere folgende Daten verarbeitet werden:</p>
+            <ul>
+                <li>IP-Adresse</li>
+                <li>Browsertyp und Browserversion</li>
+                <li>Betriebssystem</li>
+                <li>Datum und Uhrzeit des Zugriffs</li>
+                <li>Besuchte Seiten</li>
+                <li>Referrer-URL</li>
+            </ul>
+            <p>Die Verarbeitung erfolgt ausschließlich zu technischen, administrativen und sicherheitsrelevanten Zwecken.</p>
+        </div>
+
+        <!-- 4. Datensicherung -->
+        <div class="privacy-section">
+            <h2><span class="section-num">4</span> Backups und Datensicherung</h2>
+            <p>
+                Wir treffen technische und organisatorische Maßnahmen zur Sicherung
+                der Website und der darauf verarbeiteten Daten, um diese vor Verlust,
+                Manipulation oder unberechtigtem Zugriff zu schützen.
+            </p>
+            <p>
+                Backups dienen ausschließlich der Wiederherstellung der Website im
+                Falle eines technischen Fehlers oder Sicherheitsvorfalls und werden
+                nicht zu anderen Zwecken verwendet.
+            </p>
+        </div>
+
+        <!-- 5. Direkt erfasste Daten -->
+        <div class="privacy-section">
+            <h2><span class="section-num">5</span> Informationen, die wir direkt von Ihnen erfassen</h2>
+            <p>
+                Da Besucher keine Konten registrieren und keine Formulare absenden
+                können, erfassen wir normalerweise keine personenbezogenen Daten
+                direkt von Ihnen.
+            </p>
+            <p>
+                Falls Sie uns per E-Mail kontaktieren, speichern wir die von Ihnen
+                freiwillig übermittelten Informationen, um Ihre Anfrage zu beantworten.
+            </p>
+        </div>
+
+        <!-- 6. Dritte -->
+        <div class="privacy-section">
+            <h2><span class="section-num">6</span> Von Dritten erhaltene Informationen</h2>
+            <p>
+                Wir erhalten grundsätzlich keine personenbezogenen Daten von Dritten
+                über Nutzer dieser Website. Eine darüber hinausgehende Übermittlung
+                oder der Erhalt personenbezogener Daten von externen Dritten findet
+                nicht statt.
+            </p>
+        </div>
+
+        <!-- 7. Cookies -->
+        <div class="privacy-section">
+            <h2><span class="section-num">7</span> Cookies</h2>
+            <p>
+                Diese Website verwendet ausschließlich technisch notwendige Cookies,
+                die für den Betrieb und die Sicherheit der Website erforderlich sind.
+            </p>
+            <ul>
+                <li>Sitzungs-Cookies für Sicherheitsmechanismen</li>
+                <li>Keine Analyse-, Tracking- oder Werbecookies</li>
+            </ul>
+            <p>
+                Sie können Cookies jederzeit über die Einstellungen Ihres Browsers
+                deaktivieren. In diesem Fall kann die Funktionalität der Website
+                eingeschränkt sein.
+            </p>
+        </div>
+
+        <!-- 8. Externe Links -->
+        <div class="privacy-section">
+            <h2><span class="section-num">8</span> Websites und Links Dritter</h2>
+            <p>
+                Diese Website kann Links zu externen Websites enthalten,
+                beispielsweise zu sozialen Netzwerken oder anderen Plattformen.
+                Für die Inhalte und Datenschutzpraktiken externer Websites
+                übernehmen wir keine Verantwortung.
+            </p>
+        </div>
+
+        <!-- 9. Ihre Rechte -->
+        <div class="privacy-section">
+            <h2><span class="section-num">9</span> Ihre Rechte</h2>
+            <p>
+                Die Verarbeitung personenbezogener Daten erfolgt ausschließlich auf
+                Grundlage der gesetzlichen Bestimmungen der DSGVO,
+                insbesondere gemäß Art. 6 Abs. 1 DSGVO. 
+            </p>
+            <div class="rights-grid">
+                <div class="right-item">
+                    <strong>Recht auf Auskunft über Ihre gespeicherten Daten</strong>
+                    <span>Art. 15 DSGVO</span>
+                </div>
+                <div class="right-item">
+                    <strong>Recht auf Berichtigung unrichtiger Daten</strong>
+                    <span>Art. 16 DSGVO</span>
+                </div>
+                <div class="right-item">
+                    <strong>Recht auf Löschung Ihrer Daten</strong>
+                    <span>Art. 17 DSGVO</span>
+                </div>
+                <div class="right-item">
+                    <strong>Einschränkung der Verarbeitung</strong>
+                    <span>Art. 18 DSGVO</span>
+                </div>
+                <div class="right-item">
+                    <strong>Recht auf Datenübertragbarkeit</strong>
+                    <span>Art. 20 DSGVO</span>
+                </div>
+                <div class="right-item">
+                    <strong>Recht auf Widerspruch gegen die Verarbeitung</strong>
+                    <span>Art. 21 DSGVO</span>
+                </div>
+            </div>
+            <p style="margin-top: 1rem;">
+                Zur Ausübung dieser Rechte können Sie uns jederzeit kontaktieren.
+            </p>
+        </div>
+
+        <!-- 10. Beschwerden -->
+        <div class="privacy-section">
+            <h2><span class="section-num">10</span> Beschwerden</h2>
+            <p>
+                Sie haben das Recht, sich gemäß Art. 77 DSGVO bei
+                einer Datenschutzaufsichtsbehörde zu beschweren, wenn Sie der Ansicht
+                sind, dass die Verarbeitung Ihrer personenbezogenen Daten gegen
+                datenschutzrechtliche Vorschriften verstößt.
+            </p>
+        </div>
+
+        <div class="privacy-footer">
+            &copy; {% now "Y" %} Galerie &nbsp;·&nbsp; Alle Rechte vorbehalten.
+        </div>
+
+    </div>
+</div>
+{% endblock %}
